@@ -15,7 +15,7 @@ struct Preview: View {
     """
     
     var body: some View {
-        AppGPTView(code: $code)
+        AppGPTView(code: code)
     }
 }
 
