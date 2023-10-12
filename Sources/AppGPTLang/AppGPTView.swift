@@ -12,16 +12,23 @@ public struct AppGPTView: View {
     
     public var body: some View {
         VStack {
-            ForEach({ () -> [String] in
-                var array = [String]()
-                code.enumerateLines { line, _ in
-                    if !line.isEmpty {
-                        array.append(line.trim())
+            if code.trim().isEmpty {
+                Text("코드가 비었습니다.")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(Color(.label))
+                    .frame(maxHeight: .infinity)
+            } else {
+                ForEach({ () -> [String] in
+                    var array = [String]()
+                    code.enumerateLines { line, _ in
+                        if !line.isEmpty {
+                            array.append(line.trim())
+                        }
                     }
+                    return array
+                }(), id: \.self) { line in
+                    Component(code: line, variable: $variable)
                 }
-                return array
-            }(), id: \.self) { line in
-                Component(code: line, variable: $variable)
             }
         }
         .padding(26)
