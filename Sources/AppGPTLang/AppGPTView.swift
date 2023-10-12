@@ -3,11 +3,11 @@ import SwiftUI
 @available(macOS 13, iOS 16, *)
 public struct AppGPTView: View {
     
-    @Binding public var code: String
+    @State public var code: String
     @State public var variable: Variable = ["x": "Hi"]
     
-    public init(code: Binding<String>) {
-        self._code = code
+    public init(code: String) {
+        self.code = code
     }
     
     public var body: some View {
