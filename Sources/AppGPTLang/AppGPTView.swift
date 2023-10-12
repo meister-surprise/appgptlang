@@ -3,8 +3,8 @@ import SwiftUI
 @available(macOS 13, iOS 16, *)
 public struct AppGPTView: View {
     
-    @Binding var code: String
-    @State var variable: Variable = ["x": "Hi"]
+    @Binding public var code: String
+    @State public var variable: Variable = ["x": "Hi"]
     
     public var body: some View {
         VStack {
