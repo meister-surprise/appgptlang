@@ -18,15 +18,7 @@ public struct AppGPTView: View {
                     .foregroundStyle(Color(.label))
                     .frame(maxHeight: .infinity)
             } else {
-                ForEach({ () -> [String] in
-                    var array = [String]()
-                    code.enumerateLines { line, _ in
-                        if !line.isEmpty {
-                            array.append(line.trim())
-                        }
-                    }
-                    return array
-                }(), id: \.self) { line in
+                ForEach(code.splitLines(), id: \.self) { line in
                     Component(code: line, variable: $variable)
                 }
             }

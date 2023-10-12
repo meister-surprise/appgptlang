@@ -36,6 +36,15 @@ public extension String {
         return result
     }
 
+    func splitLines() -> [String] {
+        var array = [String]()
+        self.enumerateLines { line, _ in
+            if !line.isEmpty {
+                array.append(line.trim())
+            }
+        }
+        return array
+    }
     
     func getColor() -> Color {
         switch self {

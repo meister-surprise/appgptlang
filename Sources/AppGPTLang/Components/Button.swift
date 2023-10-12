@@ -25,7 +25,7 @@ public struct ButtonComponent: View {
                         let split = cmd.1.components(separatedBy: "=")
                         variable[split[0]] = split.last!
                     case "open":
-                        print("Open")
+                        UIApplication.shared.open(URL(string: cmd.1) ?? URL(string: "about:blank")!)
                     default:
                         break
                     }
